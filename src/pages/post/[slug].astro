@@ -1,6 +1,7 @@
 ---
 import { useSanityClient } from 'astro-sanity';
 import PortableText from '../../components/PortableText.astro';
+import { urlForImage } from '../../sanity/urlForImage.js';
 
 export async function getStaticPaths() {
   const posts = await useSanityClient().fetch(`*[_type == "post"]`);
@@ -15,10 +16,22 @@ export async function getStaticPaths() {
   });
 }
 
-const { title, description } = Astro.props;
+const {title, description, information, categories, headerImage, images} = Astro.props;
 
 ---
+
+<img src={urlForImage(headerImage).format('webp').url()} alt={headerImage.alt}>
 
 <h1>{title}</h1>
 
 <PortableText portableText={description} />
+
+<p>Project Type: {categories}</p>
+
+<PortableText portableText={information} />
+
+{images.map((image) => 
+  <img src={urlForImage(image).format('webp').url()} alt={image.alt}>
+  <p>{image.caption}</p>
+)}
+
