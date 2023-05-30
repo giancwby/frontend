@@ -30,8 +30,10 @@ const {title, description, information, categories, headerImage, images} = Astro
 
 <PortableText portableText={information} />
 
-{images.map((image) => 
-  <img src={urlForImage(image).format('webp').url()} alt={image.alt}>
-  <p>{image.caption}</p>
-)}
 
+{images && <div>
+			{images.map((image) => (
+				<img src={urlForImage(image).format('webp').url()} alt={image.alt}>
+      <p>{image.caption}</p>
+			))}
+</div>}
