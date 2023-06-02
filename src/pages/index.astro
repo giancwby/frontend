@@ -1,7 +1,8 @@
 ---
 import { useSanityClient } from 'astro-sanity';
+import { urlForImage } from '../sanity/urlForImage.js';
 
-const posts = await useSanityClient().fetch(`*[_type == "post"]`);
+const posts = await useSanityClient().fetch(`*[_type == "post"]{_id, title, slug, headerImage, projectDate}`);
 ---
 
 <html lang="en">
@@ -10,14 +11,16 @@ const posts = await useSanityClient().fetch(`*[_type == "post"]`);
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>My blog</title>
+		<title>GRAAR</title>
 	</head>
 	<body>
 		<h1>My Sanity Blog with Astro</h1>
-		{posts && <ul>
+		{posts && <div>
 			{posts.map((post) => (
-				<li><a href={`post/${post.slug.current}`}>{post.title}</a></li>
+				<a href={`post/${post.slug.current}`}>{post.title}</a>
+				<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
+				<p>{post.projectDate}</p>
 			))}
-		</ul>}
+		</div>}
 	</body>
 </html>
