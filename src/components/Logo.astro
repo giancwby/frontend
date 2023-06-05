@@ -1,0 +1,59 @@
+---
+// Props
+interface Props {
+    color: "black" | "white";
+}
+
+const {
+    color
+} = Astro.props as Props;
+
+// style imports
+import '../styles/global.css'
+---
+
+{
+    color === "black" && (
+        <div>
+            <img src="/logos/primary-outline-black.svg" alt="GRAAR Logo" class ="front">
+            <img src="/logos/primary-fill-black.svg" alt="GRAAR Logo" class ="behind">
+        </div>
+    )
+}
+
+{
+    color === "white" && (
+        <div>
+            <img src="/logos/primary-outline-white.svg" alt="GRAAR Logo" class ="front">
+            <img src="/logos/primary-fill-white.svg" alt="GRAAR Logo" class ="behind">
+        </div>
+    )
+}
+
+<style>
+    img {
+        width: 50px;
+    }
+
+    div {
+        > .front {
+            opacity: 1;        
+            z-index: 2;
+            position: relative;
+        }
+
+        > .behind {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        &:hover .behind{
+            opacity: 1;
+        }
+    }
+</style>   
+

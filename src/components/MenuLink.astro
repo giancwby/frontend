@@ -1,0 +1,49 @@
+---
+//style imports
+import '../styles/typography.css'
+import '../styles/global.css'
+
+// Props
+interface Props {
+    href: string;
+    text: string;
+    number: string;
+}
+
+const {
+    href,
+    text,
+    number
+
+} = Astro.props as Props;
+---
+
+<div>
+    <a href={href}>
+        <p class="large-body">{number}</p>
+        <h2>{text}</h2>
+    </a>
+</div>
+
+<style>
+    div {
+        width: fit-content;
+        > a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+
+            &:hover {
+                gap: 40px;
+            }
+        }
+    }
+
+    @media (width >= 431px) {
+        h2 {
+            font-size: var(--h1);
+        }
+    }
+</style>

@@ -1,0 +1,81 @@
+---
+//style imports
+import '../styles/global.css';
+import '../styles/typography.css';
+---
+
+<footer>
+    <div class="mobile">
+        <div>
+            <a href="/"><h3>GRAAR</h3></a>
+            <a href=""><h3>About</h3></a>
+            <a href=""><h3>Cool New Crap</h3></a>
+        </div>
+        <div>
+            <div>
+                <a href="mailto:graarph@gmail.com" target="_blank" class="small-body">graarph@gmail.com</a>
+                <a href="https://www.instagram.com/graarph/?hl=en" class="small-body">@graarph</a>
+            </div>
+            <div>
+                <p class="small-body">All Rights Reserved</p>
+                <p class="small-body">©2023</p>
+            </div>
+        </div>
+    </div>
+    <div class="desktop">
+        <a href="/"><h3>GRAAR</h3></a>
+        <p class="small-body">All Rights Reserved</p>
+        <p class="small-body">©2023</p>
+        <a href=""><h3>About</h3></a>
+        <a href="mailto:graarph@gmail.com" target="_blank" class="small-body">graarph@gmail.com</a>
+        <a href="https://www.instagram.com/graarph/?hl=en" class="small-body">@graarph</a>
+        <a href=""><h3>Cool New Crap</h3></a>
+    </div>
+</footer>
+
+<style>
+    footer {
+        margin-top: 80px;
+        
+        > .mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+
+            > div:nth-child(1) {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            > div:nth-child(2) {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        > .desktop {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: end;
+            display: none;
+        }
+    }
+
+    @media (width >= 852px) {
+        .mobile {
+            display: none !important;
+        }
+
+        .desktop {
+            display: flex !important;
+        }
+    }
+</style>

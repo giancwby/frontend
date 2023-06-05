@@ -7,6 +7,10 @@ const posts = await useSanityClient().fetch(`*[_type == "post"]{_id, title, slug
 
 //component imports
 import Layout from '../layouts/Layout.astro';
+
+//style imports
+import '../styles/typography.css';
+import '../styles/global.css';
 ---
 
 <Layout title="GRAAR">
