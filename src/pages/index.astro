@@ -1,26 +1,22 @@
 ---
+//sanity cms
 import { useSanityClient } from 'astro-sanity';
 import { urlForImage } from '../sanity/urlForImage.js';
 
 const posts = await useSanityClient().fetch(`*[_type == "post"]{_id, title, slug, headerImage, projectDate}`);
+
+//component imports
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>GRAAR</title>
-	</head>
-	<body>
-		<h1>My Sanity Blog with Astro</h1>
-		{posts && <div>
-			{posts.map((post) => (
-				<a href={`post/${post.slug.current}`}>{post.title}</a>
-				<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
-				<p>{post.projectDate}</p>
-			))}
-		</div>}
-	</body>
-</html>
+<Layout title="GRAAR">
+	<h1>My Sanity Blog with Astro</h1>
+	{posts && <div>
+		{posts.map((post) => (
+			<a href={`post/${post.slug.current}`}>{post.title}</a>
+			<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
+			<p>{post.projectDate}</p>
+		))}
+	</div>}
+</Layout>
+
