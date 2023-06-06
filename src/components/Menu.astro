@@ -8,10 +8,10 @@ import Logo from './Logo.astro';
 import MenuLink from './MenuLink.astro';
 ---
 
-<main>
+<main id="navMenu">
     <section>
         <Logo color='white'/>
-        <h3 id="close">Close</h3>
+        <h3 id="closeMenu">Close</h3>
     </section>
     <section>
         <MenuLink href='' number='01' text='About'/>
@@ -42,6 +42,7 @@ import MenuLink from './MenuLink.astro';
         color: white;
         padding: 24px;
         height: 100vh;
+
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -50,6 +51,11 @@ import MenuLink from './MenuLink.astro';
         "links"
         "contact"
         "gif";
+
+        position: fixed;
+        top: 0;
+        transition: var(--transition);
+        z-index: 99;
 
         > section {
             height: fit-content;

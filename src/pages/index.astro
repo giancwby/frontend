@@ -7,6 +7,7 @@ const posts = await useSanityClient().fetch(`*[_type == "post"]{_id, title, slug
 
 //component imports
 import Layout from '../layouts/Layout.astro';
+import Filter from '../components/Filter.astro';
 
 //style imports
 import '../styles/typography.css';
@@ -15,7 +16,7 @@ import '../styles/global.css';
 
 <Layout title="GRAAR">
 	<main>
-		<h1>My Sanity Blog with Astro</h1>
+		<Filter category='all'/>
 		{posts && <div>
 			{posts.map((post) => (
 				<a href={`post/${post.slug.current}`}>{post.title}</a>

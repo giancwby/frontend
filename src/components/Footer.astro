@@ -5,79 +5,81 @@ import '../styles/typography.css';
 ---
 
 <footer>
-    <div class="mobile">
-        <div>
-            <a href="/"><h3>GRAAR</h3></a>
-            <a href=""><h3>About</h3></a>
-            <a href=""><h3>Cool New Crap</h3></a>
-        </div>
-        <div>
-            <div>
-                <a href="mailto:graarph@gmail.com" target="_blank" class="small-body">graarph@gmail.com</a>
-                <a href="https://www.instagram.com/graarph/?hl=en" class="small-body">@graarph</a>
-            </div>
-            <div>
-                <p class="small-body">All Rights Reserved</p>
-                <p class="small-body">©2023</p>
-            </div>
-        </div>
-    </div>
-    <div class="desktop">
-        <a href="/"><h3>GRAAR</h3></a>
-        <p class="small-body">All Rights Reserved</p>
-        <p class="small-body">©2023</p>
-        <a href=""><h3>About</h3></a>
-        <a href="mailto:graarph@gmail.com" target="_blank" class="small-body">graarph@gmail.com</a>
-        <a href="https://www.instagram.com/graarph/?hl=en" class="small-body">@graarph</a>
-        <a href=""><h3>Cool New Crap</h3></a>
-    </div>
+    <a href="/"><h3>GRAAR</h3></a>
+    <a href=""><h3>About</h3></a>
+    <a href=""><h3>Cool New Crap</h3></a>
+    <a href="mailto:graarph@gmail.com" target="_blank" class="small-body">graarph@gmail.com</a>
+    <a href="https://www.instagram.com/graarph/?hl=en" class="small-body">@graarph</a>
+    <p class="small-body">All Rights Reserved</p>
+    <p class="small-body">©2023</p>
 </footer>
 
 <style>
     footer {
-        margin: 80px 24px 24px 24px;
-        
-        > .mobile {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
+        padding: 80px 24px 24px 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "graar graar"
+        "about about"
+        "cnc cnc"
+        "email insta"
+        "rights year";
 
-            > div:nth-child(1) {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            > div:nth-child(2) {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                > div {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                }
-            }
+        > a:nth-child(1) {
+            grid-area: graar;
+            margin-bottom: 8px;
         }
 
-        > .desktop {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: end;
-            display: none;
+        > a:nth-child(2) {
+            grid-area: about;
+            margin-bottom: 8px;
+        }
+        > a:nth-child(3) {
+            grid-area: cnc;
+            margin-bottom: 32px;
+        }
+        > a:nth-child(4) {
+            grid-area: email;
+            margin-bottom: 8px;
+        }
+        > a:nth-child(5) {
+            grid-area: insta;
+            justify-self: end;
+        }
+        > p:nth-of-type(1) {
+            grid-area: rights;
+        }
+        > p:nth-of-type(2) {
+            grid-area: year;
+            justify-self: end;
         }
     }
 
     @media (width >= 852px) {
-        margin: 80px 80px 40px 80px;
-
-        .mobile {
-            display: none !important;
-        }
-
-        .desktop {
-            display: flex !important;
+        footer {
+            padding: 80px 80px 40px 80px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-areas: 
+            "graar rights year about email insta cnc";
+            
+            > a, p {
+                align-self: end;
+                margin-bottom: 0px !important;
+            }
+            > a:nth-child(3) {
+                text-align: center;
+            }
+            > a:nth-child(5) {
+                justify-self: center;
+            }
+            > p:nth-of-type(1) {
+                text-align: center;
+            }
+            > p:nth-of-type(2) {
+                justify-self: center;
+            }
         }
     }
 </style>

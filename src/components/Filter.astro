@@ -1,0 +1,141 @@
+---
+//style imports
+import '../styles/global.css';
+import '../styles/typography.css';
+
+// Props
+interface Props {
+    category: "all" | "architecture" | "interiors" | "installations";
+}
+
+const {
+    category
+} = Astro.props as Props;
+---
+
+{
+    category === "all" && (
+        <section>
+            <div><a href="/" class="small-body-bold current">All</a></div>
+            <div><a href="" class="small-body not-current">Architecture</a></div>
+            <div><a href="" class="small-body not-current">Interiors</a></div>
+            <div><a href="" class="small-body not-current">Installations</a></div>
+        </section>
+    )
+}
+
+{
+    category === "architecture" && (
+        <section>
+            <div><a href="/" class="small-body not-current">All</a></div>
+            <div><a href="" class="small-body-bold current">Architecture</a></div>
+            <div><a href="" class="small-body not-current">Interiors</a></div>
+            <div><a href="" class="small-body not-current">Installations</a></div>
+        </section>
+    )
+}
+
+{
+    category === "interiors" && (
+        <section>
+            <div><a href="/" class="small-body not-current">All</a></div>
+            <div><a href="" class="small-body not-current">Architecture</a></div>
+            <div><a href="" class="small-body-bold current">Interiors</a></div>
+            <div><a href="" class="small-body not-current">Installations</a></div>
+        </section>
+    )
+}
+
+{
+    category === "installations" && (
+        <section>
+            <div><a href="/" class="small-body not-current">All</a></div>
+            <div><a href="" class="small-body not-current">Architecture</a></div>
+            <div><a href="" class="small-body not-current">Interiors</a></div>
+            <div><a href="" class="small-body-bold current">Installations</a></div>
+        </section>
+    )
+}
+
+<style>
+    section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 80px;
+        flex-wrap: wrap;
+        z-index: 5;
+        
+        > div {
+            position: relative;
+        }
+
+        > div:nth-child(1) {
+            margin-right: 8px;
+        }
+        > div:nth-child(2), div:nth-child(3) {
+            margin: 0px 8px;   
+        }
+        > div:nth-child(4) {
+            margin-left: 8px;
+        }
+    }
+
+    .current:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(1);
+        height: 1.5px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--black);
+    }
+
+    .not-current {
+        font-weight: 400;
+        transition: transform 0.15s ease-out;
+
+        &:hover {
+            font-weight: 800;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1.5px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--black);
+            transform-origin: bottom right;
+            transition: transform 0.15s ease-out;
+       } 
+
+        &:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+
+    @media (width >= 762px) {
+        section {
+            position: absolute;
+            top: 53px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            width: 400px;
+        }
+    }
+
+    @media (min-width: 524px) and (max-width: 762px) {
+        section {
+            padding: 0px 56px;
+        }
+    }
+</style>
