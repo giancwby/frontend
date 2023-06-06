@@ -35,13 +35,16 @@ const {
             gap: 16px;
             transition: var(--transition);
 
+            > p, h2 {
+                color: white;
+            }
             &:hover {
                 gap: 40px;
             }
         }
     }
 
-    @media (width >= 431px) {
+    @media (width >= 900px) {
         h2 {
             font-size: var(--h1);
         }

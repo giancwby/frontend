@@ -44,39 +44,46 @@ h1 {
     font-family: Spline-Sans;
     font-size: var(--h1);
     text-transform: uppercase;
+    font-weight: normal;
 }
 
 h2 {
     font-family: Spline-Sans;
     font-size: var(--h2);
     text-transform: uppercase;
+    font-weight: normal;
 }
 
 h3 {
     font-family: Spline-Sans;
     font-size: var(--h3);
     text-transform: uppercase;
+    font-weight: normal;
 }
 
 .small-body {
     font-family: Spline-Sans-Mono-Regular;
     font-size: var(--small-body);
     line-height: 150%;
+    font-weight: normal;
 }
 
 .small-body-bold {
     font-family: Spline-Sans-Mono-Bold;
     font-size: var(--small-body);
     line-height: 150%;
+    font-weight: bold;
 }
 
 .medium-body {
-    font-family: Spline-Sans-Mono;
+    font-family: Spline-Sans-Mono-Regular;
     font-size: var(--medium-body);
     line-height: 150%;
+    font-weight: normal;
 }
 
 .large-body {
-    font-family: Spline-Sans-Mono;
-    font-size: var(--large-body-body);
+    font-family: Spline-Sans-Mono-Regular;
+    font-size: var(--large-body);
+    font-weight: normal;
 }

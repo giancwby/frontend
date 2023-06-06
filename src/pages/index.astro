@@ -14,13 +14,21 @@ import '../styles/global.css';
 ---
 
 <Layout title="GRAAR">
-	<h1>My Sanity Blog with Astro</h1>
-	{posts && <div>
-		{posts.map((post) => (
-			<a href={`post/${post.slug.current}`}>{post.title}</a>
-			<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
-			<p>{post.projectDate}</p>
-		))}
-	</div>}
+	<main>
+		<h1>My Sanity Blog with Astro</h1>
+		{posts && <div>
+			{posts.map((post) => (
+				<a href={`post/${post.slug.current}`}>{post.title}</a>
+				<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
+				<p>{post.projectDate}</p>
+			))}
+		</div>}
+	</main>
 </Layout>
+
+<style>
+	main {
+		padding: 24px;
+	}	
+</style>
 
