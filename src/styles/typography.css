@@ -9,34 +9,34 @@
 
 @font-face {
     font-family: Spline-Sans;
-    src: url("fonts/SplineSans-Regular.woff2");
+    src: url("../../fonts/SplineSans-Regular.woff2");
 }
 
 @font-face {
     font-family: Spline-Sans-Bold;
-    src: url("fonts/SplineSans-Bold.woff2");
+    src: url("../../fonts/SplineSans-Bold.woff2");
 }
 
 @font-face {
     font-family: Spline-Sans-Mono-Regular;
-    src: url("fonts/SplineSansMono-Regular.ttf");
+    src: url("../../fonts/SplineSansMono-Regular.ttf");
 }
 
 @font-face {
     font-family: Spline-Sans-Mono-Italic;
-    src: url("fonts/SplineSansMono-Italic.ttf");
+    src: url("../../fonts/SplineSansMono-Italic.ttf");
 }
 
 
 @font-face {
     font-family: Spline-Sans-Mono-Bold;
-    src: url("fonts/SplineSansMono-Bold.ttf");
+    src: url("../../fonts/SplineSansMono-Bold.ttf");
 }
 
 
 @font-face {
     font-family: Spline-Sans-Mono-BoldItalic;
-    src: url("fonts/SplineSansMono-BoldItalic.ttf");
+    src: url("../../fonts/SplineSansMono-BoldItalic.ttf");
 }
 
 
