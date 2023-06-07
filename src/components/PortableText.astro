@@ -5,6 +5,48 @@ const { portableText } = Astro.props;
 
 //style imports
 import '../styles/global.css'
+import '../styles/typography.css'
+
+// Props
+interface Props {
+    type: "description" | "information";
+    portableText
+}
+
+const {
+    type
+} = Astro.props as Props;
 ---
 
-<Fragment set:html={sanityPortableText(portableText)} />
+{
+    type === "description" && (
+        <div class="desc">
+            <Fragment set:html={sanityPortableText(portableText)} />
+        </div>
+    )
+}
+
+{
+    type === "information" && (
+        <div class="info">
+            <Fragment set:html={sanityPortableText(portableText)} />
+        </div>
+    )
+}
+
+
+<style>
+    .desc {
+        font-family: Spline-Sans-Mono-Regular;
+        font-size: var(--small-body);
+        line-height: 150%;
+        font-weight: normal;   
+    }
+
+    .info {
+        font-family: Spline-Sans-Mono-Regular;
+        font-size: var(--small-body);
+        line-height: 360%;
+        font-weight: normal;   
+    }
+</style>
