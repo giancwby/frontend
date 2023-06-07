@@ -1,0 +1,117 @@
+---
+//sanity cms
+import { useSanityClient } from 'astro-sanity';
+import { urlForImage } from '../sanity/urlForImage.js';
+
+const posts = await useSanityClient().fetch(`*[_type == 'post' && references('ddd3caf0-c1c0-4c1d-a5fb-97943cbcedff')]{_id, title, slug, headerImage, projectDate}`);
+
+//component imports
+import Layout from '../layouts/Layout.astro';
+import Filter from '../components/Filter.astro';
+
+//style imports
+import '../styles/typography.css';
+import '../styles/global.css';
+---
+
+<Layout title="GRAAR">
+	<main>
+		<Filter category='interiors'/>	
+			{posts && <section>
+				{posts.map((post) => (
+					<div>
+						<a href={`post/${post.slug.current}`}><img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}></a>
+						<div>
+							<a href={`post/${post.slug.current}`} class="small-body">{post.title}</a>
+							<p class="small-body">{post.projectDate}</p>
+						</div>
+					</div>
+				))}
+			</section>}
+	</main>
+</Layout>
+
+<style>
+	main {
+		padding: 24px;
+
+		> section {
+			display: flex;
+			flex-direction: column;
+			gap: 120px;
+
+			> div {
+				width: 60%;
+				
+				> a > img {
+					margin-bottom: 8px;
+				}
+
+				> div {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					gap: 8px;
+
+					> p {
+						text-align: right;
+					}
+				}
+			}
+
+			> div:nth-child(even) {
+				align-self: center;
+			}
+
+			> div:nth-child(4n + 3) {
+				align-self: flex-end !important;
+			}
+
+			> div:nth-child(5 + 4n) {
+				align-self: flex-end;
+				margin-top: 0px !important;
+			}
+		}
+	}	
+
+	@media (width >= 431px) {
+		main {
+			padding: 80px;
+
+			> section {
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 14%;
+
+				> div {
+					width: 24%;
+					
+					&:hover div {
+						opacity: 1;
+						transform: translateY(0px);
+					}
+
+					> div {
+						opacity: 0;
+						transform: translateY(-8px);
+						transition: var(--transition);
+
+					}
+				}
+
+				> div:nth-child(even) {
+					margin-top: 200px;
+				}
+
+				> div:nth-child(odd) {
+					margin-top: 400px !important;
+				}
+				
+				> div:nth-child(1) {
+					margin-top: 0px !important;
+				}
+			} 
+		}
+	}
+</style>
+
