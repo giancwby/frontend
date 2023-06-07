@@ -27,30 +27,35 @@ import '../../styles/typography.css'
 ---
 <Layout title ={title}>
   <main>
-    <img src={urlForImage(headerImage).format('webp').url()} alt={headerImage.alt}>
-    <div>
-      <h1>{title}</h1>
+    <section>
+      <img src={urlForImage(headerImage).format('webp').url()} alt={headerImage.alt}>
+    </section>
+    <section>
       <div>
-        <div>
-          <PortableText portableText={description} type='description'/>
-        </div>
+        <h1>{title}</h1>
         <div>
           <div>
-            <img src="/icons/grooves.svg" alt="" class="grooves">
+            <PortableText portableText={description} type='description'/>
           </div>
           <div>
-            <PortableText portableText={information} type='information'/>
+            <div>
+              <img src="/icons/grooves.svg" alt="" class="grooves">
+            </div>
+            <div>
+              <PortableText portableText={information} type='information'/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    {images && <div>
+    </section>
+    {images && <section>
           {images.map((image) => (
-            <img src={urlForImage(image).format('webp').url()} alt={image.alt}>
-          <p class="small-body">{image.caption}</p>
+            <div>
+              <img src={urlForImage(image).format('webp').url()} alt={image.alt}>
+              <p class="small-body">{image.caption}</p>
+            </div>
           ))}
-    </div>}
+    </section>}
   </main>
 </Layout>
 
@@ -62,27 +67,56 @@ import '../../styles/typography.css'
     gap: 80px;
     margin: 80px 0;
 
-    > div {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-
-      > h1 {
-        font-size: var(--h2);
-      }
-
-      > div:nth-child(2) {
+    > section:nth-child(2) {
+      > div {
         display: flex;
         flex-direction: column;
         gap: 40px;
-      }
-
-      > div:nth-child(4) {
-        > div {
-          line-height: 500% !important;
+  
+        > h1 {
+          font-size: var(--h2);
+        }
+  
+        > div:nth-child(2) {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+        }
+  
+        > div:nth-child(4) {
+          > div {
+            line-height: 500% !important;
+          }
         }
       }
     }
+
+    > section:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+
+        > div {
+          width: 60%;
+
+          > img {
+            margin-bottom: 10px;
+          }
+        }
+
+        > div:nth-child(even) {
+          align-self: center;
+        }
+
+        > div:nth-child(3 + 4n) {
+          align-self: flex-end;
+        }
+
+        > div:nth-child(5 + 4n) {
+          align-self: flex-end;
+        }
+    }
+
   }
 
   .grooves {
@@ -93,22 +127,56 @@ import '../../styles/typography.css'
     main {
       padding: 0 80px;
 
-      > div {
-
-        > h1 {
-          font-size: var(--h1) !important;
-        }
-
-        > div:nth-child(2) {
-          flex-direction: row;
-          gap: 160px;
-
+      > section:nth-child(2) {
+        > div {
+          > h1 {
+            font-size: var(--h1) !important;
+          }
+  
           > div:nth-child(2) {
+            flex-direction: row;
+            gap: 160px;
+  
             > div:nth-child(2) {
-              width: 400px;
+              > div:nth-child(2) {
+                width: 400px;
+              }
             }
           }
         }
+      }
+
+      > section:nth-child(3) {
+        flex-direction: row;
+        flex-wrap: wrap;
+				gap: 15%;
+
+				> div {
+					width: 25%;
+					
+					&:hover div {
+						opacity: 1;
+						transform: translateY(0px);
+					}
+
+					> div {
+						opacity: 0;
+						transform: translateY(-8px);
+						transition: var(--transition);
+
+					} 
+				}
+
+				> div:nth-child(even) {
+					margin-top: 200px;
+				}
+
+				> div:nth-child(3 + 4n) {
+					
+				}
+
+				> div:nth-child(5 + 4n) {
+				}
       }
     }
   }

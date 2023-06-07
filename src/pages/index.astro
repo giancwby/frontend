@@ -16,20 +16,110 @@ import '../styles/global.css';
 
 <Layout title="GRAAR">
 	<main>
-		<Filter category='all'/>
-		{posts && <div>
-			{posts.map((post) => (
-				<a href={`post/${post.slug.current}`}>{post.title}</a>
-				<img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}>
-				<p>{post.projectDate}</p>
-			))}
-		</div>}
+		<Filter category='all'/>	
+			{posts && <section>
+				{posts.map((post) => (
+					<div>
+						<a href={`post/${post.slug.current}`}><img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}></a>
+						<div>
+							<a href={`post/${post.slug.current}`} class="small-body">{post.title}</a>
+							<p class="small-body">{post.projectDate}</p>
+						</div>
+					</div>
+				))}
+			</section>}
 	</main>
 </Layout>
 
 <style>
 	main {
 		padding: 24px;
+
+		> section {
+			display: flex;
+			flex-direction: column;
+			gap: 80px;
+
+			> div {
+				width: 60%;
+				
+				> a > img {
+					margin-bottom: 8px;
+				}
+
+				> div {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+				}
+			}
+
+			> div:nth-child(even) {
+				align-self: center;
+			}
+
+			> div:nth-child(3 + 4n) {
+				align-self: flex-end;
+			}
+
+			> div:nth-child(5 + 4n) {
+				align-self: flex-end;
+			}
+		}
 	}	
+
+	@media (width >= 431px) {
+		main {
+			padding: 80px;
+
+			> section {
+				flex-direction: row;
+				gap: 15%;
+
+				> div {
+					width: 25%;
+					
+					&:hover div {
+						opacity: 1;
+						transform: translateY(0px);
+					}
+
+					> div {
+						opacity: 0;
+						transform: translateY(-8px);
+						transition: var(--transition);
+
+					}
+				}
+
+				> div:nth-child(even) {
+					margin-top: 200px;
+				}
+
+				> div:nth-child(3 + 4n) {
+					
+				}
+
+				> div:nth-child(5 + 4n) {
+				}
+			} 
+		}
+	}
 </style>
+
+// <script>
+// 	function getRandomAlignSelfValue() {
+// 		const alignSelfValues = ["flex-start", "center", "flex-end"];
+// 		const randomIndex = Math.floor(Math.random() * alignSelfValues.length);
+// 		return alignSelfValues[randomIndex];
+// 	}
+
+// 	const projectDivs = document.getElementsByClassName("projectDiv");
+// 	const divArray = Array.from(projectDivs);
+
+// 	divArray.forEach((div) => {
+// 		const randomAlignSelfValue = getRandomAlignSelfValue();
+// 		(div as HTMLElement).style.alignSelf = randomAlignSelfValue;
+// 	});
+// </script>
 
