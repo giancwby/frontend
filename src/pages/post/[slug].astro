@@ -108,8 +108,8 @@ import '../../styles/typography.css'
           align-self: center;
         }
 
-        > div:nth-child(3 + 4n) {
-          align-self: flex-end;
+        > div:nth-child(4n + 3) {
+          align-self: end;
         }
 
         > div:nth-child(5 + 4n) {
@@ -147,35 +147,8 @@ import '../../styles/typography.css'
       }
 
       > section:nth-child(3) {
-        flex-direction: row;
-        flex-wrap: wrap;
-				gap: 15%;
-
 				> div {
 					width: 25%;
-					
-					&:hover div {
-						opacity: 1;
-						transform: translateY(0px);
-					}
-
-					> div {
-						opacity: 0;
-						transform: translateY(-8px);
-						transition: var(--transition);
-
-					} 
-				}
-
-				> div:nth-child(even) {
-					margin-top: 200px;
-				}
-
-				> div:nth-child(3 + 4n) {
-					
-				}
-
-				> div:nth-child(5 + 4n) {
 				}
       }
     }

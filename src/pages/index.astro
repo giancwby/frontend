@@ -38,7 +38,7 @@ import '../styles/global.css';
 		> section {
 			display: flex;
 			flex-direction: column;
-			gap: 80px;
+			gap: 120px;
 
 			> div {
 				width: 60%;
@@ -51,6 +51,11 @@ import '../styles/global.css';
 					display: flex;
 					flex-direction: row;
 					justify-content: space-between;
+					gap: 8px;
+
+					> p {
+						text-align: right;
+					}
 				}
 			}
 
@@ -58,12 +63,13 @@ import '../styles/global.css';
 				align-self: center;
 			}
 
-			> div:nth-child(3 + 4n) {
-				align-self: flex-end;
+			> div:nth-child(4n + 3) {
+				align-self: flex-end !important;
 			}
 
 			> div:nth-child(5 + 4n) {
 				align-self: flex-end;
+				margin-top: 0px !important;
 			}
 		}
 	}	
@@ -74,10 +80,11 @@ import '../styles/global.css';
 
 			> section {
 				flex-direction: row;
-				gap: 15%;
+				flex-wrap: wrap;
+				gap: 14%;
 
 				> div {
-					width: 25%;
+					width: 24%;
 					
 					&:hover div {
 						opacity: 1;
@@ -96,30 +103,15 @@ import '../styles/global.css';
 					margin-top: 200px;
 				}
 
-				> div:nth-child(3 + 4n) {
-					
+				> div:nth-child(odd) {
+					margin-top: 400px !important;
 				}
-
-				> div:nth-child(5 + 4n) {
+				
+				> div:nth-child(1) {
+					margin-top: 0px !important;
 				}
 			} 
 		}
 	}
 </style>
-
-// <script>
-// 	function getRandomAlignSelfValue() {
-// 		const alignSelfValues = ["flex-start", "center", "flex-end"];
-// 		const randomIndex = Math.floor(Math.random() * alignSelfValues.length);
-// 		return alignSelfValues[randomIndex];
-// 	}
-
-// 	const projectDivs = document.getElementsByClassName("projectDiv");
-// 	const divArray = Array.from(projectDivs);
-
-// 	divArray.forEach((div) => {
-// 		const randomAlignSelfValue = getRandomAlignSelfValue();
-// 		(div as HTMLElement).style.alignSelf = randomAlignSelfValue;
-// 	});
-// </script>
 
