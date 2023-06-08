@@ -20,7 +20,7 @@ import '../styles/global.css';
 			{posts && <section>
 				{posts.map((post) => (
 					<div>
-						<a href={`post/${post.slug.current}`}><img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}></a>
+						<a href={`/post/${post.slug.current}`}><img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}></a>
 						<div>
 							<a href={`post/${post.slug.current}`} class="small-body">{post.title}</a>
 							<p class="small-body">{post.projectDate}</p>
