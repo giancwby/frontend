@@ -33,13 +33,21 @@ import '../styles/global.css'
 	</body>
 </html>
 
+<style>
+	body, html {
+		height: 100%;
+  		width: 100%;
+  		margin: 0;
+	}
+</style>
+
 <script>
 	const closeMenu = document.getElementById('closeMenu');
 	const openMenu = document.getElementById('openMenu')
 
 	closeMenu.addEventListener('click', function() {
 		const menu = document.getElementById('navMenu');
-		menu.style.left = '1500px';
+		menu.style.left = '2000px';
 		menu.style.opacity = '0';
 	});
 

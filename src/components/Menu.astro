@@ -41,20 +41,24 @@ import MenuLink from './MenuLink.astro';
         background-color: black;
         color: white;
         padding: 24px;
-        height: 100vh;
+        height: 95vh;
+        width: 100vw;
+        min-height: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: hidden;
 
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-        "nav"
-        "links"
-        "contact"
-        "gif";
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        display: none;
-        transition: var(--transition);
+        transition: all ease-in-out .2s;
         z-index: 99;
+
+        position: fixed;
+        top: 0;
+        left: 2000px;
+        opacity: 0;
 
         > section {
             height: fit-content;
@@ -111,6 +115,7 @@ import MenuLink from './MenuLink.astro';
         main {
             padding: 40px 80px 64px 80px;
             height: 90vh;
+            display: grid;
             grid-template-columns: 2fr 1fr;
             grid-template-rows: auto;
             grid-template-areas: 
