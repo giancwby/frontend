@@ -3,6 +3,7 @@
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import Menu from '../components/Menu.astro';
+import Preloader from '../components/Preloader.astro';
 
 // Props
 interface Props {
@@ -26,6 +27,7 @@ import '../styles/global.css'
 		<title>{title}</title>
 	</head>
 	<body>
+		<Preloader/>
 		<Nav/>
 		<Menu />
 		<slot />
