@@ -25,7 +25,9 @@ import Layout from "../../layouts/Layout.astro";
 //style imports
 import '../../styles/typography.css'
 ---
-<Layout title ={title}>
+<Layout 
+  title ={"GRAAR | " + title}
+  image={urlForImage(headerImage).format('webp').url()}>
   <main>
     <section>
       <img src={urlForImage(headerImage).format('webp').url()} alt={headerImage.alt}>

@@ -4,14 +4,17 @@ import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import Menu from '../components/Menu.astro';
 import Preloader from '../components/Preloader.astro';
+import { SEO } from 'astro-seo';
 
 // Props
 interface Props {
 	title: string;
+	image: string;
 }
 
 const { 
-	title
+	title,
+	image
 } = Astro.props as Props;
 
 //style imports
@@ -21,6 +24,17 @@ import '../styles/global.css'
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<SEO
+			title={title}
+			description="GRAAR is a Manila-based interdisciplinary design studio that creates playful and thoughtful design solutions with architecture, interiors, graphics, art, and more."
+      	openGraph={{
+			basic: {
+				title: title,
+				type: "Portfolio",
+				image: image
+			}
+		}}
+		/>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
