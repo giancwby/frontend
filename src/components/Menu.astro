@@ -11,7 +11,9 @@ import MenuLink from './MenuLink.astro';
 <main id="navMenu">
     <section>
         <a href="/"><Logo color='white'/></a>
-        <h3 id="closeMenu">Close</h3>
+        <div>
+            <h3 id="closeMenu">Close</h3>
+        </div>
     </section>
     <section>
         <MenuLink href='/about' number='01' text='About'/>
@@ -71,6 +73,28 @@ import MenuLink from './MenuLink.astro';
             position: relative;
             align-items: center;
             grid-area: nav;
+
+            > div {
+                position: relative; ;
+                cursor: pointer;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    transform: scaleX(0);
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: white;
+                    transform-origin: bottom right;
+                    transition: transform 0.15s ease-out;  
+                }
+                &:hover:after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+            }
         }
 
         > section:nth-child(2) {
@@ -124,7 +148,7 @@ import MenuLink from './MenuLink.astro';
             "gif contact";
             
             > section:nth-child(1), section:nth-child(3) {
-                > h3 {
+                > div > h3 {
                     font-size: var(--h2);
                 }
             }

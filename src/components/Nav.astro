@@ -10,7 +10,9 @@ import Logo from './Logo.astro';
 <nav>
     <section>
         <a href="/"><Logo color='black'/></a>
-        <h3 id="openMenu">Menu</h3>
+        <div>
+            <h3 id="openMenu">Menu</h3>
+        </div>
     </section>
 </nav>
 
@@ -28,6 +30,32 @@ import Logo from './Logo.astro';
             align-items: center; 
         }
     }
+
+    div {
+        position: relative;
+        cursor: pointer;
+
+        > h3 {
+            &:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 1.5px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--black);
+                transform-origin: bottom right;
+                transition: transform 0.15s ease-out;  
+            }
+            &:hover:after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        }
+    }
+
+
 
     @media (width >= 524px) {
         nav {
