@@ -3,7 +3,7 @@
 import { useSanityClient } from 'astro-sanity';
 import { urlForImage } from '../sanity/urlForImage.js';
 
-const posts = await useSanityClient().fetch(`*[_type == 'post' && references('83bc6a23-fd8c-42bc-92c5-d9b0f6bfe65d')]{_id, title, slug, headerImage, projectDate}`);
+const posts = await useSanityClient().fetch(`*[_type == 'post' && references('83bc6a23-fd8c-42bc-92c5-d9b0f6bfe65d')]{_id, title, slug, order, headerImage, thumbnail, projectDate} | order(order asc)`);
 
 //component imports
 import Layout from '../layouts/Layout.astro';
@@ -22,7 +22,7 @@ import '../styles/global.css';
 			{posts && <section>
 				{posts.map((post) => (
 					<div>
-						<a href={`/post/${post.slug.current}`}><img src={urlForImage(post.headerImage).format('webp').url()} alt={post.headerImage.alt}></a>
+						<a href={`/post/${post.slug.current}`}><img src={urlForImage(post.thumbnail).format('webp').url()} alt={post.thumbnail.alt}></a>
 						<div>
 							<a href={`post/${post.slug.current}`} class="small-body">{post.title}</a>
 							<p class="small-body">{post.projectDate}</p>
