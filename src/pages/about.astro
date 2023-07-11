@@ -6,6 +6,8 @@ import { urlForImage } from '../sanity/urlForImage.js';
 
 const teamMembers = await useSanityClient().fetch(`*[_type == "teamMembers"] | order(_createdAt asc)`);
 
+const alumni = await useSanityClient().fetch(`*[_type == "alumni"]`);
+
 //component imports
 import Layout from '../layouts/Layout.astro';
 
@@ -74,7 +76,12 @@ import '../styles/global.css';
                 </div>}
             <div>
                 <h3>Alumni</h3>
-                <p class="small-body"></p>
+                {alumni && <p class="small-body">
+                    {alumni.map((alumnis) => (
+                        <span>{alumnis.alumniMembers}</span>
+                    ))}
+                </p>
+                }
             </div>
         </section>
         <section>
