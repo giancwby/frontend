@@ -1,4 +1,11 @@
 ---
+//sanity cms
+import { useSanityClient } from 'astro-sanity';
+import PortableText from '../components/PortableText.astro';
+import { urlForImage } from '../sanity/urlForImage.js';
+
+const teamMembers = await useSanityClient().fetch(`*[_type == "teamMembers"] | order(_createdAt asc)`);
+
 //component imports
 import Layout from '../layouts/Layout.astro';
 
@@ -52,43 +59,22 @@ import '../styles/global.css';
              <p class="small-body studio-desc">Our studio name is simply a combination of two words that briefly but concisely sum up what we do. It's an onomatopoeia-based word that stays true to our ethos of creating fun stuff from even the simplest of things. It's also the sound Grey, our mascot makes!</p>
         </section>
         <section>
-            <div>
-                <div class="teamMember">
-                    <img src="/images/lando.webp" alt="Lando">
-                    <div>
-                        <h3>Lando</h3>
-                        <p class="small-body">Lando likes minimalist forms and simple solutions to problems. Function, intent, and meaning are important for him in his designs. He enjoys collaboration among designers, builders, and craftsmen to bring ideas to life.
-
-                        A frustrated artist and animator, he sometimes spends his free time creating illustrations as Imagininja.</p>
-                    </div>
-                </div>
-                <div class="teamMember">
-                    <img src="/images/allie.webp" alt="Allie">
-                    <div>
-                        <h3>Allie</h3>
-                        <p class="small-body">Allie likes playing with color, texture, and pattern, and she enjoys finding the right balance in using these elements for every project. Her wide range of interests has led her to work in other related fields such as branding, graphic design, and web design.
-
-                        She also enjoys doing abstract illustrations, surface design, and print and pattern work.</p>
-                    </div>
-                </div>
-                <div class="teamMember">
-                    <img src="/images/martin.webp" alt="Martin">
-                    <div>
-                        <h3>Martin</h3>
-                        <p class="small-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-                <div class="teamMember">
-                    <img src="/images/gab.webp" alt="Gab">
-                    <div>
-                        <h3>Gab</h3>
-                        <p class="small-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
+                {teamMembers && <div>
+                    {teamMembers.map((teamMembers) => (
+                        <div class ="teamMember">
+                            <img src={urlForImage(teamMembers.displayPicture).format('webp').url()} alt={teamMembers.alt}>
+                            <div>
+                                <h3>{teamMembers.name}</h3>
+                                <p class="small-body">
+                                    <PortableText portableText={teamMembers.introduction}/>
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>}
             <div>
                 <h3>Alumni</h3>
-                <p class="small-body">Kara, Lorem, Ipsum</p>
+                <p class="small-body"></p>
             </div>
         </section>
         <section>
