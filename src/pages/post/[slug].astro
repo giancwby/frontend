@@ -175,12 +175,14 @@ import '../../styles/typography.css'
     outline: none;
     opacity: 0;
     transition: var(--transition);
+    height: 70%;
 
     > div {
+      height: 100%;
       > img {
         margin: auto;
-        min-height: 400px;
-        max-height: 900px;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
