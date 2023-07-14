@@ -53,13 +53,64 @@ import '../../styles/typography.css'
     {images && <section>
           {images.map((image) => (
             <div>
-              <img src={urlForImage(image).format('webp').url()} alt={image.alt}>
+              <img src={urlForImage(image).format('webp').url()} alt={image.alt} class="openModal">
               <p class="small-body">{image.caption}</p>
             </div>
           ))}
     </section>}
+    <dialog id="modal" class="modal">
+      <div>
+        <img src={urlForImage(headerImage).format('webp').url()} alt="" id="modalImage"> 
+      </div>
+    </dialog>
   </main>
 </Layout>
+
+<script>
+  const modal = document.getElementById('modal');
+  const images = document.querySelectorAll('.openModal');
+  const modalImage = document.getElementById('modalImage');
+
+  const handleClick = (event) => {
+
+    if (window.innerWidth >= 431) {
+      const clickedImageSrc = event.target.src;
+      //@ts-ignore
+      modalImage.src = clickedImageSrc;
+  
+      setTimeout(function() {
+        //@ts-ignore
+        modal.showModal();
+        modal.style.opacity = '1';
+      }, 50);
+    }
+
+    else {
+      return;
+    }
+  }
+
+  images.forEach((image) => {
+    image.addEventListener('click', handleClick);
+  });
+
+  modal.addEventListener('close', () => {
+    modal.style.opacity = '0';
+  })
+
+  modal.addEventListener('click', e => {
+    const dialogDimensions = modal.getBoundingClientRect()
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      //@ts-ignore
+      modal.close();
+    }
+  })
+</script>
 
 <style>
   main {
@@ -97,6 +148,7 @@ import '../../styles/typography.css'
 
           > img {
             margin-bottom: 10px;
+            cursor: pointer;  
           }
         }
 
@@ -116,6 +168,21 @@ import '../../styles/typography.css'
 
   .grooves {
     margin-bottom: 40px;
+  }
+
+  .modal {
+    border: none 0;
+    outline: none;
+    opacity: 0;
+    transition: var(--transition);
+
+    > div {
+      > img {
+        margin: auto;
+        min-height: 400px;
+        max-height: 900px;
+      }
+    }
   }
 
   @media (width >= 431px) {
