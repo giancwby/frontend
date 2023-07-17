@@ -43,7 +43,7 @@ import '../../styles/typography.css'
             <div>
               <img src="/icons/grooves.svg" alt="" class="grooves">
             </div>
-            <div>
+            <div class="description">
               <PortableText portableText={information}/>
             </div>
           </div>
@@ -216,7 +216,28 @@ import '../../styles/typography.css'
 				}
       }
     }
-  }
+}
+
+@media (min-width: 432px) and (max-width: 905px) {
+    .description {
+      width: 250px!important;
+    }
+
+    main {
+      > section:nth-child(2) {
+        > div > div {
+          gap: 80px !important;
+        }
+      }
+
+      > section:nth-child(3) {
+        gap: 160px;
+        > div {
+          width: 40%;
+        }
+      }
+    }
+}
 </style>
 
 
