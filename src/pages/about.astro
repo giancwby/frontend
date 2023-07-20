@@ -59,19 +59,19 @@ import '../styles/global.css';
              <p class="small-body studio-desc">Our studio name is simply a combination of two words that briefly but concisely sum up what we do. It's an onomatopoeia-based word that stays true to our ethos of creating fun stuff from even the simplest of things. It's also the sound Grey, our mascot makes!</p>
         </section>
         <section>
-                {teamMembers && <div>
-                    {teamMembers.map((teamMembers) => (
-                        <div class ="teamMember">
-                            <img src={urlForImage(teamMembers.displayPicture).format('webp').url()} alt={teamMembers.alt}>
-                            <div>
-                                <h3>{teamMembers.name}</h3>
-                                <p class="small-body">
-                                    <PortableText portableText={teamMembers.introduction}/>
-                                </p>
-                            </div>
+            {teamMembers && <div>
+                {teamMembers.map((teamMembers) => (
+                    <div class ="teamMember">
+                        <img src={urlForImage(teamMembers.displayPicture).format('webp').url()} alt={teamMembers.alt}>
+                        <div>
+                            <h3>{teamMembers.name}</h3>
+                            <p class="small-body">
+                                <PortableText portableText={teamMembers.introduction}/>
+                            </p>
                         </div>
-                    ))}
-                </div>}
+                    </div>
+                ))}
+            </div>}
             <div>
                 <h3>Alumni</h3>
                 {alumni && <p class="small-body">
@@ -169,9 +169,14 @@ import '../styles/global.css';
                 gap: 80px;
                 
                 > div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px; 
+                    
                     > img {
                         width: 200px;
                         height: 256px;
+                        object-fit: contain;
                     }
 
                     > div {
@@ -182,15 +187,16 @@ import '../styles/global.css';
                 }
 
                 > div:nth-child(odd) {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 24px;  
+                     
                 }
 
                 > div:nth-child(even) {
-                    display: flex;
-                    flex-direction: row-reverse;
-                    gap: 24px;  
+                   align-items: flex-end;
+
+                   > div {
+                    align-items: flex-end;
+                    text-align: right;
+                   }
                 }
             }
 
@@ -278,6 +284,12 @@ import '../styles/global.css';
 
                     > div:nth-child(even) {
                         margin-top: 80px;
+                        align-items: flex-start;
+
+                        > div {
+                            align-items: flex-start;
+                            text-align: left;
+                        }
                     }
                 }
             }
