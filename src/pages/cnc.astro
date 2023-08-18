@@ -1,0 +1,926 @@
+---
+//component imports
+import LayoutCNC from "../layouts/LayoutCNC.astro";
+
+//sanity cms
+import { useSanityClient } from 'astro-sanity';
+import { urlForImage } from '../sanity/urlForImage.js';
+
+const posts = await useSanityClient().fetch(`*[_type == 'post' && references('817e4de6-ba49-48d9-b427-a4a4fb73f2b3')]{_id, title, slug, thumbnail} | order(order asc)`);
+
+//style imports
+import '../styles/global.css';
+---
+
+<LayoutCNC
+    title="Cool New Crap"
+    image="">
+    <main>
+        <nav>
+            <a href="/index">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                    <path class="graar-logo" d="M38.8657 9.21514L25.4468 0.297418L24.9992 0L11.1327 9.21514L0.358859 16.3741L0 16.6128V50H49.9984V37.1387C49.9984 36.8388 49.8315 36.5639 49.5645 36.4257C49.2976 36.2874 48.9758 36.3083 48.7299 36.4803L45.1598 38.9714L41.5898 36.4803C41.3116 36.2866 40.9414 36.2866 40.6632 36.4811L37.1133 38.9706L33.5239 36.4787C33.2465 36.2858 32.878 36.2866 32.6006 36.4795L29.0305 38.9706L25.8048 36.7199V30.6437L28.5684 32.5721C28.8458 32.7658 29.216 32.7658 29.4934 32.5721L33.0634 30.081L36.6335 32.5721C36.9109 32.7658 37.2811 32.7658 37.5585 32.5721L41.1285 30.081L44.6986 32.5721C44.976 32.7658 45.3461 32.7658 45.6235 32.5721L49.6557 29.7587C49.871 29.6084 50 29.3624 50 29.1003V16.6128L38.8673 9.21514H38.8657Z" fill="#FFBE3A"/>
+                </svg>
+            </a>
+        </nav>
+        <section class="hero">
+            <img src="/logos/cnc-logo--stacked.svg" alt="Cool New Crap Logo" class="logo">
+            <img src="/icons/blue-stool.svg" alt="" class="shape blue">
+            <img src="/icons/red-star.svg" alt="" class="shape red">
+            <img src="/icons/brown-cracker.svg" alt="" class="shape brown">
+            <img src="/icons/pink-base.svg" alt="" class="shape pink">
+        </section>
+        <section class="snippet">  
+            <p class="body">CUSTOM BUILT-INS, FURNITURE, AND OBJECTS</p>
+        </section>
+        <section class="intro">
+            <p class="body">We make</p>
+            <div class="__marquee">
+                <img src="/logos/cnc-logo--horizontal--desktop.svg" alt="Cool New Crap Logo">
+            </div>
+            <div class="__copy">
+                <p class="body">using</p>
+                <p class="header">CNC</p>
+                <p class="body">techonology</p>
+            </div>
+        </section>
+        <section class="description">
+            <div>
+                <div class="machine">
+                    <img src="/images/cnc-machine.webp" alt="CNC Machine">
+                    <div>
+                        <h2 class="header">
+                            What is CNC?
+                        </h2>
+                        <p class="body">
+                            CNC (Computer Numerical Control) uses a computer to automate parts of the manufacturing process. In our case, we usually work with a CNC router to cut shapes out of raw material and produce objects.
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="cool">
+                    <div>
+                        <img src="/icons/cnc-cutout.svg" alt="CNC Cutout">
+                        <h2 class="header">
+                            What's so cool about it?
+                        </h2>
+                        <p class="body">
+                            Using a CNC router allows us to design using complex shapes and systems while producing them quickly and accurately!*
+                        </p>
+                        <p class="body">
+                            *versus other conventional fabrication methods
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio">
+            <div class="__copy">
+                <h2 class="header">
+                    What we've made
+                </h2>
+                <p class="body">
+                    Bespoke and space-specific solutions to fit your needs
+                </p>
+            </div>
+            {posts && <div class="__projects">
+                {posts.map((post) => (
+                    <div class="__project">
+                        <a href={`/post/${post.slug.current}`} class="__thumbnail">
+                            <img src={urlForImage(post.thumbnail).format('webp').url()} alt={post.thumbnail.alt}>
+                        </a>
+                        <a href="" class="__title">
+                            <h3 class="header">{post.title}</h3>
+                        </a>
+                    </div>
+                ))}    
+            </div>}
+        </section>
+        <section class="process">
+            <div>
+                <h2 class="header">Our custom-made process</h2>
+                <div class="body __steps">
+                    <div class="__row">
+                        <div class="__step">
+                            <div class="__number">
+                                <p>01</p>
+                            </div>
+                            <p>Get Client Requirements</p>
+                        </div>
+                        <div class="__step">
+                            <div class="__number">
+                                <p>02</p>
+                            </div>
+                            <p>Quote for design</p>
+                        </div>
+                        <div class="__step">
+                            <div class="__number">
+                                <p>03</p>
+                            </div>
+                            <p>Develop design</p>
+                        </div>
+                    </div>
+                    <div class="__row">
+                        <div class="__step">
+                            <div class="__number">
+                                <p>04</p>
+                            </div>
+                            <div class="__copy">
+                                <p>Costing</p>
+                                <p>(by partner fabricator/contractor)</p>
+                            </div>
+                        </div>
+                        <div class="__step">
+                            <div class="__number">
+                                <p>05</p>
+                            </div>
+                            <div class="__copy">
+                                <p>Production</p>
+                                <p>(by partner fabricator)</p>
+                            </div>
+                        </div>
+                        <div class="__step">
+                            <div class="__number">
+                                <p>06</p>
+                            </div>
+                            <div class="__copy">
+                                <p>Assembly & installation</p>
+                                <p>(by partner contractor)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cta">
+            <h2 class="header">Let's make some</h2>
+            <img src="/logos/cnc-logo--horizontal.svg" alt="Cool New Crap Logo">
+            <p class="body">For custom projects or bulk orders, please get in touch with us at <a href="mailto:coolnewcrap@graar.ph" target="_blank">coolnewcrap@graar.ph</a>.</p>
+            <a href="mailto:coolnewcrap@graar.ph" target="_blank" class="body">
+                <p>Get in Touch</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="256" height="87" viewBox="0 0 256 87" fill="none">
+                    <path d="M255.5 43.7939C255.5 67.5419 240.489 86.7939 221.987 86.7939C212.356 86.7939 203.684 81.585 197.571 73.2462C191.458 81.585 182.777 86.7939 173.156 86.7939C163.534 86.7939 155.341 81.8777 149.264 73.9442C143.188 81.8777 134.723 86.7939 125.373 86.7939C116.023 86.7939 108.282 82.2905 102.269 74.9425C96.255 82.2905 88.1255 86.7939 79.164 86.7939C70.2025 86.7939 62.5432 82.5457 56.5839 75.573C50.6246 82.5457 42.7031 86.7939 34.0038 86.7939C15.5021 86.7939 0.5 67.5419 0.5 43.7939C0.5 20.046 15.5021 0.793945 34.0038 0.793945C42.7031 0.793945 50.6246 5.04216 56.5839 12.0149C62.5432 5.04216 70.4647 0.793945 79.164 0.793945C87.8632 0.793945 96.255 5.29735 102.269 12.6454C108.282 5.29735 116.412 0.793945 125.373 0.793945C134.335 0.793945 143.188 5.71016 149.264 13.6437C155.341 5.71016 163.796 0.793945 173.156 0.793945C182.515 0.793945 191.458 6.00288 197.571 14.3417C203.684 6.00288 212.356 0.793945 221.987 0.793945C240.489 0.793945 255.5 20.046 255.5 43.7939Z" fill="#293F27"/>
+                </svg>
+            </a>
+        </section>
+        <footer class="body">
+            <a href="/" class="__home">GRAAR</a>
+            <a href="mailto:hello@graar.ph" target="_blank" class="__email">hello@graar.ph</a>
+            <a href="https://www.instagram.com/graarph/?hl=en" target="_blank" class="__graar-ig">@graar.ph</a>
+            <a href="https://www.instagram.com/coolnewcrap/?hl=en" target="_blank" class="__cnc-ig">@coolnewcrap</a>
+            <p class="__arr">All Rights Reserved</p>
+            <p class="__year">©2023</p>
+            <a href="/about" class="__about">ABOUT</a>    
+        </footer>
+    </main>
+</LayoutCNC>
+
+<script>
+    function Marquee(selector, speed) {
+    const parentSelector = document.querySelector(selector);
+    const clone = parentSelector.innerHTML;
+    const firstElement = parentSelector.children[0];
+    let i = 0;
+    console.log(firstElement);
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+
+    setInterval(function () {
+        firstElement.style.marginLeft = `-${i}px`;
+        if (i > firstElement.clientWidth) {
+        i = 0;
+        }
+        i = i + speed;
+    }, 0);
+    }
+
+    if (window.innerWidth >= 1023) {
+        Marquee('.__marquee', 0.6)
+    }
+
+    else {
+        // @ts-ignore
+        Marquee('.__marquee', 0.3)
+    }
+
+</script>
+
+<style>
+    :root {
+        --micro-body: 0.75rem;
+        --small-body: 1rem;
+        --medium-body: 1.5rem;
+        --large-body: 2rem;
+        --xlarge-body: 2.5rem;
+        --h1: 5rem;
+        --h2: 4rem;
+        --h3: 2.5rem;
+        --h4: 2rem;
+
+        --green: #293F27;
+        --yellow: #FFBE3A;
+        --cream: #FFE7CF;
+        --brown: #C68337;
+        --pink: #FFA6AE;
+        --blue: #4C9EC9;
+        --red: #FF4D3A;
+    }
+
+    @font-face {
+        font-family: Sligoil-Micro;
+        src: url("../../fonts/Sligoil-Micro.woff2");
+    }
+
+    @font-face {
+        font-family: Oddval-SemiBold;
+        src: url("../../fonts/Oddval-SemiBold.woff2");
+    }
+
+    h1,h2,h3 {
+        text-transform: none;
+    }
+
+    .body {
+        font-family: Sligoil-Micro;
+        font-weight: 300;
+    }
+
+    .header {
+        font-family: Oddval-SemiBold;
+        line-height: 100%;
+    }
+
+    .graar-logo {
+        transition: var(--transition);
+        &:hover {
+            fill: #FFA6AE;
+        }
+    }
+
+    nav {
+        background-color: var(--green);
+        padding: 1.5rem 5rem;
+        display: flex;
+        justify-content: center;
+
+        @media (width >=431px) {
+            padding: 2.5rem 5rem;
+        }
+    }
+
+    .hero {
+        background-color: var(--green);
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        z-index: -2;
+        
+        > .logo {
+            width: 236px;
+
+            @media (width >=1023px) {
+                width: 575px;
+            }
+        }
+
+        > .shape {
+            position: fixed;
+            z-index: -1;
+
+            &.blue {
+                width: 40px; 
+                left: 3%;
+                top: 20%;
+
+                @media (width >=1023px) {
+                    width: 137px; 
+                    left: 6%;
+                    top: 20%;
+                }
+            }
+
+            &.red {
+                width: 60px; 
+                left: -5%;
+                top: 40%;
+
+                @media (width >=1023px) {
+                    width: 161px; 
+                    left: 1%;
+                    top: 58%;
+                }
+            }
+
+            &.brown {
+                width: 50px; 
+                right: -2%;
+                top: 20%;
+
+                @media (width >=1023px) {
+                    width: 160px; 
+                    right: 5%;
+                    top: 20%;
+                }
+            }
+
+            &.pink {
+                width: 60px; 
+                right: -6%;
+                top: 40%;
+
+                @media (width >=1023px) {
+                    width: 160px; 
+                    right: 5%;
+                    top: 56%;
+                }
+            }
+        }
+    }
+
+    .snippet {
+        display: flex;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--brown);
+        text-align: center;
+
+        @media (width >=1023px) {
+            padding: 2.5rem 5rem;
+        }
+
+        > p {
+            font-size: var(--micro-body);
+            color: var(--cream);
+
+            @media (width >=1023px) {
+                font-size: var(--xlarge-body);
+            }   
+        }
+    }
+
+    .intro {
+        background-color: var(--cream);
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        overflow: hidden;
+
+        @media (width >=1023px) {
+            padding: 7.5rem 5rem;
+            gap: 2.5rem;
+        }
+
+        > p{
+            text-align: center;
+            font-size: var(--small-body);
+            margin-bottom: .75rem;
+
+            @media (width >=1023px) {
+                font-size: var(--large-body);
+            } 
+        }
+
+        >.__marquee {
+            display: flex;
+            gap: 2rem;
+
+            >img {
+                width: 776px;
+                max-width: none;
+    
+                @media (width >=1023px) {
+                    width: 2145px;
+                } 
+            }
+        }
+
+        > .__copy {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+
+            @media (width >=1023px) {
+                font-size: var(--large-body);
+            } 
+
+            >.header {
+                font-size: var(--xlarge-body);
+                color: var(--green);
+
+                @media (width >=1023px) {
+                    font-size: var(--h2);
+                } 
+            }
+        }
+    }
+
+    .description {
+        background-color: var(--cream);
+        padding: 2.5rem 1.5rem 7.5rem 1.5rem;
+        display: flex;
+        justify-content: center;
+
+        @media (width >=1023px) {
+            padding: 7.5rem 5rem 12.5rem 5rem;
+        } 
+        
+        > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5rem;
+            width: 1440px;
+
+            > .machine {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 12.5rem;
+                position: relative;
+    
+                @media (width >=1023px) {
+                    flex-direction: row;
+                    padding-left: 17.5rem;
+                    padding-top: 0px;
+                    gap: 4rem;
+                    justify-content: start;
+                } 
+    
+                > img {
+                    width: 250px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+    
+                    @media (width >=1023px) {
+                        width: 350px;
+                        bottom: 0;
+                        right: auto;
+                    } 
+                }
+    
+                >div {
+                    padding: 4.5rem 2rem;
+                    color: var(--cream);
+                    background-image: url(/icons/cnc-container--blue.svg);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+    
+                    @media (width >=1023px) {
+                        width: 500px;
+                        height: 400px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: 7.5rem;
+                        padding-right: 5.5rem;
+                    } 
+    
+                    >h2 {
+                        font-size: var(--h4);
+                        margin-bottom: 1rem;
+    
+                        @media (width >=1023px) {
+                            font-size:var(--h1) ;
+                        } 
+                    }
+        
+                    > p {
+                        font-size: var(--micro-body);
+    
+                        @media (width >=1023px) {
+                            font-size:var(--small-body);
+                        } 
+                    }
+                }
+            }
+    
+            >.cool {
+                display: flex;
+                flex-direction: column;
+                padding-top: 8.75rem;
+                
+                @media (width >=1023px) {
+                    flex-direction: row;
+                    padding-top: 0px;
+                    gap: 4rem;
+                    justify-content: end;
+                } 
+    
+                > div {
+                    padding: 4.5rem 5.5rem 4.5rem 1.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    background-image: url(/icons/cnc-container--pink.svg);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    position: relative;
+    
+                    @media (width >=1023px) {
+                        width: 330px;
+                        height: 120px;
+                        justify-content: center;
+                        padding: 15rem 10rem 15rem 7.5rem;
+                        background-size: auto;
+                        background-clip: padding-box;
+                    } 
+    
+                    > img {
+                        width: 160px;
+                        transform: rotate(90deg);
+                        margin: auto;
+                        position: absolute;
+                        top: -180px;
+                        left: 0;
+                        right: 0;
+    
+                        @media (width >=1023px) {
+                            width: 215px;
+                            top: 0;
+                            bottom: 0;
+                            right: auto;
+                            left: -150px;
+                            transform: rotate(0deg);
+                            margin: auto;
+                        } 
+                    }
+    
+                    > h2 {
+                        font-size: var(--h4);
+    
+                        @media (width >=1023px) {
+                            font-size:var(--h2) ;
+                        } 
+                    }
+    
+                    >p:nth-child(3) {
+                        font-size: var(--micro-body);
+    
+                        @media (width >=1023px) {
+                            font-size:var(--small-body);
+                        } 
+                    }
+                    >p:nth-child(4) {
+                        font-size: 0.625rem;
+    
+                        @media (width >=1023px) {
+                            font-size: 0.75rem;
+                        } 
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 5rem 1.5rem;
+        background-color: var(--yellow);
+
+        @media (width >=1023px) {
+            padding: 7.5rem 5rem;
+            gap: 7.5rem;
+        } 
+
+        >.__copy {
+            text-align: center;
+
+            >h2 {
+                font-size: var(--h3);
+                color: var(--green);
+                margin-bottom: 1rem;
+
+                @media (width >=1023px) {
+                    font-size: var(--h1);
+                } 
+            }   
+            >p {
+                font-size: var(--small-body);
+                
+                @media (width >=1023px) {
+                    font-size: var(--medium-body);
+                } 
+            }
+        }
+
+        >.__projects {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+
+            @media (width >=1023px) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 7.5rem 10rem;
+                justify-content: center;
+            } 
+
+            >.__project {
+                @media (width >=1023px) {
+                    width: 40%;
+                } 
+
+                >.__thumbnail {
+                    >img {
+                        margin-bottom: 1rem;
+                        -webkit-mask-repeat: no-repeat;
+                        mask-repeat: no-repeat;
+                        mask-size: contain; 
+
+                        @media (width >=1023px) {
+                            margin-bottom: 2.5rem;
+                        } 
+                    }
+                }
+                
+
+                >.__title {
+                    text-decoration: none;
+
+                    >h3 {
+                        font-size: var(--h4);
+                        color: var(--green);
+                        text-align: center;
+
+                        @media (width >=1023px) {
+                            font-size: var(--h3);
+                        } 
+                    }
+                }
+            }
+
+            >.__project:nth-child(3n+1){
+                >.__thumbnail>img{
+                    -webkit-mask-image: url(/icons/project-mask--1.svg);
+                    mask-image: url(/icons/project-mask--1.svg);
+                } 
+            }
+
+            >.__project:nth-child(3n+2){
+                >.__thumbnail>img{
+                    -webkit-mask-image: url(/icons/project-mask--2.svg);
+                    mask-image: url(/icons/project-mask--2.svg);
+                } 
+            }
+
+            >.__project:nth-child(3n+3){
+                >.__thumbnail>img{
+                    -webkit-mask-image: url(/icons/project-mask--3.svg);
+                    mask-image: url(/icons/project-mask--3.svg);
+                } 
+            }
+        }
+    }
+
+    .process {
+        background-color: var(--green);
+        color: var(--cream);
+        text-align: center;
+        font-size: var(--small-body);
+        display: flex;
+        justify-content: center;
+        
+        > div {
+            padding: 5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            width: 1400px;
+    
+            @media (width >=1023px) {
+                padding: 7.5rem 5rem;
+                gap: 5rem;
+                font-size: var(--medium-body);
+            } 
+
+            > h2 {
+                font-size: var(--h3);
+                
+                @media (width >=1023px) {
+                    font-size: var(--h2);
+                } 
+            }
+    
+            
+            >.__steps {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+                
+                @media (width >=1023px) {
+                    gap: 5rem;
+                } 
+                
+                >.__row {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2.5rem;
+                    
+                    @media (width >=1023px) {
+                        flex-direction: row;
+                        padding: 0px 16rem;
+                        justify-content: space-between;
+                    } 
+    
+                    
+                    
+                    >.__step {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        align-items: center;
+                        
+                        @media (width >=1023px) {
+                            width: 200px;
+                        } 
+    
+                        >.__number {
+                            width: 16px;
+                            height: 16px;
+                            padding: 1rem 1rem 1rem .8rem;
+                            border-radius: 5rem;
+                            color: var(--cream);
+                            border: 1px solid var(--cream);
+                            
+                            @media (width >=1023px) {
+                                width: 30px;
+                                height: 28px;
+                                padding: 1rem;
+                            } 
+                        }
+    
+                        >.__copy{
+                            >p:nth-child(1) {
+                                margin-bottom: 0.2rem;
+                            }
+                            >p:nth-child(2) {
+                                font-size: var(--micro-body);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 5rem 1.5rem;
+        background-color: var(--cream);
+        text-align: center;
+        overflow: hidden;
+
+        @media (width >=1023px) {
+            padding: 7.5rem 5rem;
+        }
+
+        
+        >h2 {
+            font-size: var(--h4);
+            color: var(--green);
+            
+            @media (width >=1023px) {
+                font-size: var(--h1);
+            }
+        }
+
+        >img {
+            width: 100%;
+        }
+
+        >p {
+            font-size: var(--micro-body);
+
+            @media (width >=1023px) {
+                font-size: var(--small-body);
+            }
+
+            >a {
+                color: var(--green);
+            }
+        }
+
+        >a {
+            text-decoration: none;
+            position: relative;
+            width: fit-content;
+
+            >p {
+                color: var(--cream);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: var(--small-body);
+            }
+
+            >svg path {
+                transition: var(--transition);
+            }
+
+            &:hover svg path {
+                fill: var(--blue);
+            }
+        }
+    }
+
+    footer {
+        background-color: var(--cream);
+        font-size: 0.75rem;
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "home about"
+        "email email"
+        "graar-ig arr"
+        "cnc-ig year";
+        row-gap: 0.5rem;
+
+        @media (width >=1023px) {
+            padding: 2.5rem px;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-areas: 
+            "home email graar-ig cnc-ig arr year about";
+            align-items: center;
+        }
+
+        >a {
+            text-decoration: none;
+            transition: var(--transition);
+
+            &:hover {
+                color: var(--green);
+            }
+        }
+
+        >.__home {
+            grid-area: home;
+            font-size: 1.5rem;  
+            margin-bottom: 1.5rem;
+
+            @media (width >=1023px) {
+                margin-bottom: 0px;
+            }
+        }
+
+        >.__about {
+            grid-area: about;
+            justify-self: end;
+            font-size: 1.5rem;
+        }
+
+        >.__email {
+            grid-area: email;
+            text-decoration: underline;
+        }
+
+        >.__graar-ig {
+            grid-area: graar-ig;
+            text-decoration: underline;
+        }
+
+        >.__cnc-ig {
+            grid-area: cnc-ig;
+            text-decoration: underline;
+        }
+
+        >.__arr {
+            grid-area: arr;
+            justify-self: end;
+            text-align: right;
+        }
+        
+        >.__year {
+            grid-area: year;
+            justify-self: end;
+        }
+
+        >* {
+            @media (width >=1023px) {
+                justify-self: center !important;
+            }
+        }
+    }
+</style>

@@ -39,7 +39,6 @@
     src: url("../../fonts/SplineSansMono-BoldItalic.ttf");
 }
 
-
 h1 {
     font-family: Spline-Sans;
     font-size: var(--h1);
