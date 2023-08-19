@@ -87,7 +87,7 @@ import '../styles/global.css';
                 {posts.map((post) => (
                     <div class="__project">
                         <a href={`/post/${post.slug.current}`} class="__thumbnail">
-                            <img src={urlForImage(post.thumbnail).format('webp').url()} alt={post.thumbnail.alt}>
+                            <img src={urlForImage(post.thumbnail).format('webp').url()} alt={post.thumbnail.alt} loading="eager">
                         </a>
                         <a href="" class="__title">
                             <h3 class="header">{post.title}</h3>
