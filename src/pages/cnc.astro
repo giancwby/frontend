@@ -87,7 +87,7 @@ import '../styles/global.css';
                 {posts.map((post) => (
                     <div class="__project">
                         <a href={`/post/${post.slug.current}`} class="__thumbnail">
-                            <img src={urlForImage(post.thumbnail).format('webp').url()} alt={post.thumbnail.alt} loading="eager">
+                            <img src={urlForImage(post.thumbnail).format('webp').size(1080,720).url()} alt={post.thumbnail.alt}>
                         </a>
                         <a href="" class="__title">
                             <h3 class="header">{post.title}</h3>
@@ -642,6 +642,8 @@ import '../styles/global.css';
                         -webkit-mask-repeat: no-repeat;
                         mask-repeat: no-repeat;
                         mask-size: contain; 
+                        max-width: 100%;
+                        height: auto;
 
                         @media (width >=1023px) {
                             margin-bottom: 2.5rem;
