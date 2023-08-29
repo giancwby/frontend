@@ -199,7 +199,6 @@ import '../styles/global.css';
     }
 
     else {
-        // @ts-ignore
         Marquee('.__marquee', 0.3)
     }
 
@@ -634,7 +633,11 @@ import '../styles/global.css';
             >.__project {
                 @media (width >=1023px) {
                     width: 40%;
-                } 
+                }
+                
+                &:hover .__thumbnail > img {
+                    transform: scale(1.05);
+                }
 
                 >.__thumbnail {
                     >img {
@@ -644,6 +647,7 @@ import '../styles/global.css';
                         mask-size: contain; 
                         max-width: 100%;
                         height: auto;
+                        transition: var(--transition);
 
                         @media (width >=1023px) {
                             margin-bottom: 2.5rem;
@@ -659,6 +663,7 @@ import '../styles/global.css';
                         font-size: var(--h4);
                         color: var(--green);
                         text-align: center;
+                        transition: var(--transition);
 
                         @media (width >=1023px) {
                             font-size: var(--h3);
@@ -753,18 +758,25 @@ import '../styles/global.css';
                         } 
     
                         >.__number {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                             width: 16px;
                             height: 16px;
-                            padding: 1rem 1rem 1rem .8rem;
+                            padding: 1rem;
                             border-radius: 5rem;
                             color: var(--cream);
                             border: 1px solid var(--cream);
                             
                             @media (width >=1023px) {
-                                width: 30px;
-                                height: 28px;
+                                width: 25px;
+                                height: 25px;
                                 padding: 1rem;
                             } 
+
+                            > p {
+                                font-size: var(--small-body);
+                            }
                         }
     
                         >.__copy{
