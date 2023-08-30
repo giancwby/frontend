@@ -279,6 +279,10 @@ import '../styles/global.css';
         > .logo {
             width: 236px;
 
+            @media (width >=768px) {
+                width: 400px;
+            }
+
             @media (width >=1023px) {
                 width: 575px;
             }
@@ -293,6 +297,11 @@ import '../styles/global.css';
                 left: 3%;
                 top: 20%;
 
+                @media (width >=768px) {
+                    width: 100px;
+                    top: 25%;
+                }
+
                 @media (width >=1023px) {
                     width: 137px; 
                     left: 6%;
@@ -304,6 +313,11 @@ import '../styles/global.css';
                 width: 60px; 
                 left: -5%;
                 top: 40%;
+
+                @media (width >=768px) {
+                    width: 100px;
+                    top: 50%;
+                }
 
                 @media (width >=1023px) {
                     width: 161px; 
@@ -317,6 +331,12 @@ import '../styles/global.css';
                 right: -2%;
                 top: 20%;
 
+                @media (width >=768px) {
+                    width: 100px;
+                    top: 25%;
+                    right: 1%;
+                }
+
                 @media (width >=1023px) {
                     width: 160px; 
                     right: 5%;
@@ -328,6 +348,12 @@ import '../styles/global.css';
                 width: 60px; 
                 right: -6%;
                 top: 40%;
+
+                @media (width >=768px) {
+                    width: 100px;
+                    top: 50%;
+                    right: 1%;
+                }
 
                 @media (width >=1023px) {
                     width: 160px; 
@@ -352,6 +378,10 @@ import '../styles/global.css';
         > p {
             font-size: var(--micro-body);
             color: var(--cream);
+
+            @media (width >=768px) {
+                font-size: var(--small-body);
+            }   
 
             @media (width >=1023px) {
                 font-size: var(--xlarge-body);
@@ -378,6 +408,10 @@ import '../styles/global.css';
             font-size: var(--small-body);
             margin-bottom: .75rem;
 
+            @media (width >=768px) {
+                font-size: var(--medium-body);
+            } 
+
             @media (width >=1023px) {
                 font-size: var(--large-body);
             } 
@@ -403,6 +437,10 @@ import '../styles/global.css';
             gap: 16px;
             justify-content: center;
             align-items: center;
+
+            @media (width >=768px) {
+                font-size: var(--medium-body);
+            } 
 
             @media (width >=1023px) {
                 font-size: var(--large-body);
@@ -592,7 +630,7 @@ import '../styles/global.css';
         padding: 5rem 1.5rem;
         background-color: var(--yellow);
 
-        @media (width >=1023px) {
+        @media (width >=768px) {
             padding: 7.5rem 5rem;
             gap: 7.5rem;
         } 
@@ -738,6 +776,12 @@ import '../styles/global.css';
                     display: flex;
                     flex-direction: column;
                     gap: 2.5rem;
+
+                    @media (width >=768px) {
+                        flex-direction: row;
+                        padding: 0px 3rem;
+                        justify-content: space-between;
+                    } 
                     
                     @media (width >=1023px) {
                         flex-direction: row;
@@ -753,6 +797,10 @@ import '../styles/global.css';
                         gap: 1rem;
                         align-items: center;
                         
+                        @media (width >=768px) {
+                            width: 30%;
+                        }
+
                         @media (width >=1023px) {
                             width: 200px;
                         } 
