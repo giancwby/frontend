@@ -287,6 +287,7 @@ import '../styles/global.css';
 		height: 100%;
   		width: 100%;
   		margin: 0;
+        overflow-x: hidden;
 	}
 
     .body {
@@ -671,18 +672,11 @@ import '../styles/global.css';
                         } 
                     }
     
-                    >p:nth-child(3) {
+                    >p {
                         font-size: var(--micro-body);
     
                         @media (width >=1023px) {
                             font-size:var(--small-body);
-                        } 
-                    }
-                    >p:nth-child(4) {
-                        font-size: 0.625rem;
-    
-                        @media (width >=1023px) {
-                            font-size: 0.75rem;
                         } 
                     }
                 }
