@@ -60,17 +60,19 @@ import '../styles/global.css'
 <script>
 	const closeMenu = document.getElementById('closeMenu');
 	const openMenu = document.getElementById('openMenu')
+	const menu = document.getElementById('navMenu');
+	const pageBody = document.body;
 
 	closeMenu.addEventListener('click', function() {
-		const menu = document.getElementById('navMenu');
 		menu.style.left = '2000px';
 		menu.style.opacity = '0';
+		pageBody.style.overflow = 'visible';
 	});
 
 	openMenu.addEventListener('click', function () {
-		const menu = document.getElementById('navMenu');
 		menu.style.left = '0px';
 		menu.style.opacity = '1';
+		pageBody.style.overflow = 'hidden';
 	});
 </script>
 
