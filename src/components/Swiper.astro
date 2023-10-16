@@ -1,0 +1,90 @@
+---
+// component imports
+import Slide from "./Slide.astro";
+---
+
+<div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <Slide 
+            number='01'
+            name="S.A.D. Stool"
+            subheading="(straight ass design)"
+            cost={["Graphite/White --- 5,000", "Raw Ply --- 4,000"]}
+            image = '/images/s.a.d.-stool.svg'
+            imageAlt = 'S.A.D. Stool'
+            imageMobileWidth = '160px'
+            imageTabletWidth = '222px'
+            imageDesktopWidth="222px"
+        />
+      </div>
+      <div class="swiper-slide">
+        <Slide 
+            number='02'
+            name="L.S.D. Stool"
+            subheading="(less straight design)"
+            cost={["Graphite/White --- 5,000", "Raw Ply --- 4,000"]}
+            image = '/images/l.s.d.-stool.svg'
+            imageAlt = 'L.S.D. Stool'
+            imageMobileWidth = '160px'
+            imageTabletWidth = '222px'
+            imageDesktopWidth="222px"
+        />
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <img src="/icons/arrow--left.svg" alt="" class="swiper-button-prev">
+    <img src="/icons/arrow--right.svg" alt="" class="swiper-button-next">
+  </div>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script>
+    // @ts-nocheck
+    const swiper = new Swiper('.swiper', {
+        speed: 400,
+        autoHeight: true,
+        loop:true,
+        grabCursor:true,
+        pagination: {
+            el: '.swiper-pagination'
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        centeredSlides: true
+    });
+  </script>
+
+  <style>
+    :root {
+        --swiper-pagination-color: #293F27;
+        --swiper-pagination-bottom: 16px;
+        --swiper-navigation-sides-offset: 12px;
+
+        @media (width >= 1280px) {
+            --swiper-pagination-bottom: 32px;
+        }
+    }
+    
+    .swiper {
+        width: 100%;
+
+        > .swiper-wrapper {
+
+            >.swiper-slide {
+                
+            }
+        }
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        width: 24px !important;
+
+        @media (width >= 1280px) {
+            width: 64px !important;
+        }
+    }
+  </style>

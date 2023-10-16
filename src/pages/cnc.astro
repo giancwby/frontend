@@ -2,6 +2,7 @@
 //component imports
 import { SEO } from "astro-seo";
 import Preloader from "../components/Preloader.astro";
+import Swiper from "../components/Swiper.astro";
 
 //sanity cms
 import { useSanityClient } from 'astro-sanity';
@@ -34,7 +35,6 @@ import '../styles/global.css';
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-
 	</head>
 	<body>
 		<Preloader/>
@@ -119,6 +119,22 @@ import '../styles/global.css';
                     ))}    
                 </div>}
             </section>
+            <section class="catalog">
+                <div>
+                    <div class="__header">
+                        <h2 class="header">Order from our <br>in-house collection</h2>
+                        <p class="body">See what's cool, see what's new</p>
+                    </div>
+                    <Swiper />
+                    <div class="__info">
+                        <p class="body">Standard production time is at least fourteen (14) working days after confirmation of orders.
+                        <br><br>
+                        For custom design queries, please contact us at 
+                        <a href="mailto:cnc@graar.ph" >cnc@graar.ph</a> or 
+                        <a href="https://www.instagram.com/coolnewcrap/?hl=en" target="_blank">@coolnewcrap</a> on Instagram.</p>
+                    </div>
+                </div>
+            </section>
             <section class="process">
                 <div>
                     <h2 class="header">Our custom-made process</h2>
@@ -199,6 +215,7 @@ import '../styles/global.css';
 	</body>
 
     <script>
+        // @ts-nocheck
         var heroTl = gsap.timeline();
         heroTl.fromTo("nav > *", {x:-20, opacity:0,}, {duration: .3, x:0, opacity:1, ease: "power2.out"});
         heroTl.fromTo(".hero > *", {x:-20, opacity:0,}, {duration: .3, x:0, opacity:1, stagger:0.1, ease: "power2.out"});
@@ -798,6 +815,83 @@ import '../styles/global.css';
                     -webkit-mask-image: url(/icons/project-mask--3.svg);
                     mask-image: url(/icons/project-mask--3.svg);
                 } 
+            }
+        }
+    }
+
+    .catalog {
+        background-color: var(--cream);
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            padding: 80px 24px;
+            justify-content: center;
+            width: 90%;
+            max-width: 1280px;
+
+            @media (width >= 768px) {
+                padding: 80px;
+            }
+
+            @media (width >= 1280px) {
+                padding: 120px 80px;
+                gap: 80px;
+            }
+
+            > .__header {
+                text-align: center;
+
+                > h2 {
+                    margin-bottom: 16px;
+                    font-size: 32px;
+                    color: var(--green);
+
+                    @media (width >= 768px) {
+                        font-size: 56px;
+                    }
+
+                    @media (width >= 1280px) {
+                        font-size: 80px;
+                    }
+                }
+
+                > p {
+                    font-size: 16px;
+
+                    @media (width >= 1280px) {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            >.__info {
+                padding: 40px;
+                border: 3px dashed var(--green);
+                border-radius: 40px;
+                background-color: var(--pink);
+                text-align: center;
+                font-size: 16px;
+                color: var(--green);
+                line-height: 150%;
+
+                @media (width >= 1280px) {
+                    font-size: 20px;
+                    padding: 80px 228px;
+                }
+
+                > p > a {
+                    color: var(--green);
+                    transition: var(--transition);
+
+                    &:hover {
+                        color: black;
+                    }
+                }
             }
         }
     }

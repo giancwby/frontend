@@ -1,0 +1,178 @@
+---
+interface Props {
+    number: string
+    name: string,
+    subheading: string,
+    cost: Array<string>,
+    image: string,
+    imageAlt,
+    imageMobileWidth: string,
+    imageTabletWidth: string,
+    imageDesktopWidth: string
+}
+
+const {
+    number,
+    name,
+    subheading,
+    cost,
+    image,
+    imageAlt,
+    imageMobileWidth,
+    imageTabletWidth,
+    imageDesktopWidth
+} = Astro.props as Props
+---
+
+<div class="wrapper">
+    <div class="__header">
+        <p class="body">{number}</p>
+        <div class="__title">
+            <h3 class="header">{name}</h3>
+            <p class="body">{subheading}</p>
+        </div>
+        <p class="body">01</p>
+    </div>
+    <img src={image} alt={imageAlt}>
+    <div class="__cost">
+        {cost.map((cost) => (
+            <p class="body">{cost}</p>
+        ))}
+    </div>
+    <a href="mailto:coolnewcrap@graar.ph" target="_blank" class="body __button">
+        <p>Pre-Order</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="87" viewBox="0 0 256 87" fill="none">
+            <path d="M255.5 43.7939C255.5 67.5419 240.489 86.7939 221.987 86.7939C212.356 86.7939 203.684 81.585 197.571 73.2462C191.458 81.585 182.777 86.7939 173.156 86.7939C163.534 86.7939 155.341 81.8777 149.264 73.9442C143.188 81.8777 134.723 86.7939 125.373 86.7939C116.023 86.7939 108.282 82.2905 102.269 74.9425C96.255 82.2905 88.1255 86.7939 79.164 86.7939C70.2025 86.7939 62.5432 82.5457 56.5839 75.573C50.6246 82.5457 42.7031 86.7939 34.0038 86.7939C15.5021 86.7939 0.5 67.5419 0.5 43.7939C0.5 20.046 15.5021 0.793945 34.0038 0.793945C42.7031 0.793945 50.6246 5.04216 56.5839 12.0149C62.5432 5.04216 70.4647 0.793945 79.164 0.793945C87.8632 0.793945 96.255 5.29735 102.269 12.6454C108.282 5.29735 116.412 0.793945 125.373 0.793945C134.335 0.793945 143.188 5.71016 149.264 13.6437C155.341 5.71016 163.796 0.793945 173.156 0.793945C182.515 0.793945 191.458 6.00288 197.571 14.3417C203.684 6.00288 212.356 0.793945 221.987 0.793945C240.489 0.793945 255.5 20.046 255.5 43.7939Z" fill="#293F27"/>
+        </svg>
+    </a>
+</div>
+
+<style define:vars={{imageMobileWidth, imageTabletWidth, imageDesktopWidth}}>
+:root {
+    --green: #293F27;
+    --yellow: #FFBE3A;
+    --cream: #FFE7CF;
+    --brown: #C68337;
+    --pink: #FFA6AE;
+    --blue: #4C9EC9;
+    --red: #FF4D3A;
+}
+    
+.body {
+    font-family: Sligoil-Micro;
+    font-weight: 300;
+}
+
+.header {
+    font-family: Oddval-SemiBold;
+    line-height: 100%;
+}  
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed var(--pink);
+    border-radius: 36px;
+    margin: 0 auto;
+
+    @media (width >=1280px) {
+        padding: 64px 48px;
+        width: 50%;
+    }
+
+    >.__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+    
+        > p {
+            font-size: 1rem;
+            color: var(--green);
+        }
+
+        > p:nth-child(3) {
+            opacity: 0;
+        }
+    
+        >.__title {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+    
+            >h3 {
+                font-size: 2rem;
+                text-transform: none;
+                color: var(--green);
+
+                @media (width >=1280px) {
+                    font-size: 2.5rem;
+                }
+            }
+    
+            >p {
+                font-size: 0.75rem;
+
+                @media (width >=1280px) {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    > img {
+        width: var(--imageMobileWidth);
+
+        @media (width >=768px) {
+            width: var(--imageTabletWidth);
+        }
+
+        @media (width >=1280px) {
+            width: var(--imageDesktopWidth);
+        }
+    }
+
+    >.__cost {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 1rem;
+        text-align: center;
+
+        @media (width >=1280px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    >.__button {
+        text-decoration: none;
+        position: relative;
+        width: fit-content;
+
+        >p {
+            color: var(--cream);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: var(--small-body);
+        }
+
+        >svg path {
+            transition: var(--transition);
+        }
+
+        &:hover svg path {
+            fill: var(--blue);
+        }
+    }
+}
+
+
+</style>
