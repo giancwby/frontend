@@ -92,8 +92,11 @@ const {
         align-self: stretch;
     
         > p {
-            font-size: 1rem;
+            font-size: .75rem;
             color: var(--green);
+            @media (width >= 768px) {
+                font-size: 1rem;
+            }
         }
 
         > p:nth-child(3) {

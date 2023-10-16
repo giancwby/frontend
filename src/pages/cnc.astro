@@ -229,6 +229,8 @@ import '../styles/global.css';
         gsap.fromTo(".portfolio > .__copy", {x:-50, opacity:0,}, {duration: 1, x:0, opacity:1, ease: "power2.out", scrollTrigger: {trigger: ".portfolio > .__copy", start: "bottom bottom"}});
         gsap.fromTo(".portfolio > .__projects > .__project", {x:-50, opacity:0,}, {duration: 1, x:0, opacity:1, ease: "power2.out", stagger: .2, scrollTrigger: {trigger: ".portfolio > .__projects", start: "top center"}});
 
+        gsap.fromTo(".catalog > div > *", {x:-20, opacity:0,}, {duration: .3, x:0, opacity:1, stagger:0.2, ease: "power2.out", scrollTrigger: {trigger: ".catalog", start: "top 70%"}});
+
         gsap.fromTo(".process > div > h2", {x:-50, opacity:0,}, {duration: 1, x:0, opacity:1, ease: "power2.out", scrollTrigger: {trigger: ".process > div > h2", start: "bottom bottom"}});
         gsap.fromTo(".__steps > .__row", {x:-50, opacity:0,}, {duration: 1, x:0, opacity:1, ease: "power2.out", stagger: .2, scrollTrigger: {trigger: ".__steps >.__row", start: "top 70%"}});
 
