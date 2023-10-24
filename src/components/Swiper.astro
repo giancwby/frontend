@@ -11,11 +11,11 @@ import Slide from "./Slide.astro";
             name="S.A.D. Stool"
             subheading="(straight ass design)"
             cost={["Graphite/White --- 5,000", "Raw Ply --- 4,000"]}
-            image = '/images/s.a.d.-stool.svg'
+            image = '/images/SAD Stool.webp'
             imageAlt = 'S.A.D. Stool'
-            imageMobileWidth = '160px'
-            imageTabletWidth = '222px'
-            imageDesktopWidth="222px"
+            imageMobileWidth = '149px'
+            imageTabletWidth = '287px'
+            imageDesktopWidth="293px"
         />
       </div>
       <div class="swiper-slide">
@@ -24,11 +24,11 @@ import Slide from "./Slide.astro";
             name="L.S.D. Stool"
             subheading="(less straight design)"
             cost={["Graphite/White --- 5,000", "Raw Ply --- 4,000"]}
-            image = '/images/l.s.d.-stool.svg'
+            image = '/images/LSD Stool.webp'
             imageAlt = 'L.S.D. Stool'
-            imageMobileWidth = '160px'
-            imageTabletWidth = '222px'
-            imageDesktopWidth="222px"
+            imageMobileWidth = '149px'
+            imageTabletWidth = '287px'
+            imageDesktopWidth="293px"
         />
       </div>
       <div class="swiper-slide">
@@ -37,11 +37,11 @@ import Slide from "./Slide.astro";
             name="E.F. Bench"
             subheading="(originally designed for Everything's Fine)"
             cost={["Graphite/White --- 7,000"]}
-            image = '/images/e.f.-bench.svg'
-            imageAlt = 'E.F. Stool'
-            imageMobileWidth = '222px'
-            imageTabletWidth = '450px'
-            imageDesktopWidth="450px"
+            image = '/images/EF Bench.webp'
+            imageAlt = 'E.F. Bench'
+            imageMobileWidth = '185px'
+            imageTabletWidth = '359px'
+            imageDesktopWidth="366px"
         />
       </div>
       <div class="swiper-slide">
@@ -50,11 +50,24 @@ import Slide from "./Slide.astro";
             name="E.F. Table"
             subheading="(originally designed for Everything's Fine)"
             cost={["Graphite/White --- 22,000"]}
-            image = '/images/e.f.-table.svg'
+            image = '/images/EF Table.webp'
             imageAlt = 'E.F. Table'
-            imageMobileWidth = '270px'
-            imageTabletWidth = '450px'
-            imageDesktopWidth="500px"
+            imageMobileWidth = '228px'
+            imageTabletWidth = '442px'
+            imageDesktopWidth="450px"
+        />
+      </div>
+      <div class="swiper-slide">
+        <Slide 
+            number='05'
+            name="E.F. Mobile Bookcase"
+            subheading="(originally designed for Everything's Fine)"
+            cost={["Graphite/White --- 30,000"]}
+            image = '/images/EF Bookcase.webp'
+            imageAlt = 'E.F. Bookcase'
+            imageMobileWidth = '228px'
+            imageTabletWidth = '442px'
+            imageDesktopWidth="450px"
         />
       </div>
     </div>
@@ -70,7 +83,6 @@ import Slide from "./Slide.astro";
     // @ts-nocheck
     const swiper = new Swiper('.swiper', {
         speed: 400,
-        autoHeight: true,
         loop:true,
         grabCursor:true,
         pagination: {
@@ -88,7 +100,11 @@ import Slide from "./Slide.astro";
     :root {
         --swiper-pagination-color: #293F27;
         --swiper-pagination-bottom: 16px;
-        --swiper-navigation-sides-offset: 12px;
+        --swiper-navigation-sides-offset: 24px;
+
+        @media (width >= 768px) {
+            --swiper-pagination-bottom: 32px;
+        }
 
         @media (width >= 1280px) {
             --swiper-pagination-bottom: 32px;
@@ -109,7 +125,7 @@ import Slide from "./Slide.astro";
     .swiper-button-prev, .swiper-button-next {
         width: 24px !important;
 
-        @media (width >= 1280px) {
+        @media (width >= 768px) {
             width: 64px !important;
         }
     }
